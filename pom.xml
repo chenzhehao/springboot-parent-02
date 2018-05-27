@@ -18,6 +18,7 @@
 		<module>spring-jvm-02</module>
 		<module>springboot-designpattern-02</module>
 		<module>springboot-rmi-02</module>
+		<module>springboot-jdk18-02</module>
 	</modules>
 
 	<properties>
