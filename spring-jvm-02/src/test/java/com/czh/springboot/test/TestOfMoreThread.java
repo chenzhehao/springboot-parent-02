@@ -27,11 +27,11 @@ public class TestOfMoreThread {
 	@Test
 	public void test1() {
 		ExecutorService pool = Executors.newCachedThreadPool();
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 10; i++) {
 			pool.execute(new Thread() {
 				@Autowired
 				public void run() {
-					for (int j = 0; j < 100; j++) {
+					for (int j = 0; j < 10; j++) {
 						HttpCommonService.httpRequest();
 					}
 					count++;

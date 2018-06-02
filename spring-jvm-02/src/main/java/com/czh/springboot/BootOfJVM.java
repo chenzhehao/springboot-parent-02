@@ -35,13 +35,13 @@ public class BootOfJVM {
 			A a2 = new A(s.toString());
 			A a3 = new A(s.toString());
 			A a4 = new A(s.toString());
-			System.out.println(a1);
-			System.out.println(a2);
-			System.out.println(a3);
-			System.out.println(a4);
+//			System.out.println(a1);
+//			System.out.println(a2);
+//			System.out.println(a3);
+//			System.out.println(a4);
 		}
 		try {
-			Thread.sleep(random.nextInt(50000));
+			Thread.sleep(random.nextInt(5000));
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
