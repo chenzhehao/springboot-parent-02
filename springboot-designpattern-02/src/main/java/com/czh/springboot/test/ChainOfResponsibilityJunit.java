@@ -1,12 +1,11 @@
 package com.czh.springboot.test;
 
-import org.junit.Test;
-
 import com.czh.springboot.base.chainofresponsibility.Manager;
 import com.czh.springboot.base.chainofresponsibility.Request;
 import com.czh.springboot.base.impl.chainofresponsibility.CommonManager;
 import com.czh.springboot.base.impl.chainofresponsibility.GeneralManager;
 import com.czh.springboot.base.impl.chainofresponsibility.MajorManager;
+import org.junit.Test;
 
 /**
  * @Title: ChainOfResponsibility.java
