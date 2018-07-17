@@ -48,7 +48,7 @@ public class TestOfMoreThread {
 		public static void httpRequest() {
 			URL url;
 			try {
-				url = new URL("http://127.0.0.1:8080/jvm/");
+				url = new URL("http://localhost:10301/chc/v1/exam/1/questions");
 				// http协议传输
 				HttpURLConnection httpUrlConn = (HttpURLConnection) url.openConnection();
 				httpUrlConn.setDoOutput(true);
@@ -56,7 +56,7 @@ public class TestOfMoreThread {
 				httpUrlConn.setUseCaches(false);
 				httpUrlConn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
 				// 设置请求方式（GET/POST）
-				httpUrlConn.setRequestMethod("GET");
+				httpUrlConn.setRequestMethod("POST");
 				httpUrlConn.setConnectTimeout(50000000);
 				httpUrlConn.setReadTimeout(50000000);
 				httpUrlConn.connect();
