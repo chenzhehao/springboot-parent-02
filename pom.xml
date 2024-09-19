@@ -31,12 +31,16 @@
 			其内置Tomcat容器或Jetty容器，具体由配置来决定（默认Tomcat） -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-tomcat</artifactId>
-			<scope>provided</scope>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<!-- 如果你要选择Jetty，也非常简单，就是把pom中的tomcat依赖排除，并加入Jetty容器的依赖 -->
 		<!-- <dependency> -->
