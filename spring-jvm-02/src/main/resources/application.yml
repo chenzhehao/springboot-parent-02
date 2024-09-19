@@ -1,3 +1,4 @@
 server:
-  port: 8080
-  context-path: /jvm
+  port: 8081
+  servlet:
+    context-path: /jvm2

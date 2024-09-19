@@ -1,6 +1,7 @@
 server:
   port: 8080
-  context-path: /rocketmq
+  servlet:
+    context-path: /rocketmq
 
 rocketmq:
     nameserver:192.168.57.3:9876;192.168.57.4:9876
