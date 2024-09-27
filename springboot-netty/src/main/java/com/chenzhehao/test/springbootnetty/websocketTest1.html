@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>stomp</title>
+</head>
+
+<body>
+	输入你的用户名：<input id="userName" type="text" value="lisi1"/>
+	输入你要聊天的用户名：<input id="userName2" type="text" value="testUser"/>
+	<br />
+	<input id="text" type="text" />
+	<button onclick="send()">普通消息</button>
+	<br/>
+	<input id="textUser" type="text" />
+	<button onclick="send2()">发送定向用户消息</button>
+	<br/>
+	<button onclick="subscribe1()">订阅消息/testUser/topic/messages</button>
+	<br/>
+	<button onclick="subscribe2()"><订阅用户testUser></订阅用户testUser>的消息</button>
+	<hr />
+<!--	<button onclick="openWebSocket()">开启WebSocket连接</button>-->
+	<button onclick="closeWebSocket()">关闭WebSocket连接</button>
+	<hr />
+	<div id="message"></div>
+</body>
+
+    <script src="http://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="https://cdn.bootcss.com/sockjs-client/1.1.4/sockjs.min.js"></script>
+<script type="text/javascript">
+	// 建立连接对象（还未发起连接）
+	var socket = new SockJS("http://127.0.0.1:8081/nettyTest/websocket");
+	setMessageInnerHTML("连接----");
+	// 获取 STOMP 子协议的客户端对象
+	var stompClient = Stomp.over(socket);
+	var login = document.getElementById('userName').value;
+	stompClient.connect({login:login}, function connectCallback(frame) {
+		// 连接成功时（服务器响应 CONNECTED 帧）的回调方法
+		setMessageInnerHTML("连接成功");
+		stompClient.subscribe('/testUser/topic/messages', function (response) {
+			setMessageInnerHTML("已成功订阅/testUser/topic/messages---一次性订阅响应");
+			setMessageInnerHTML("/testUser/topic/messages 你接收到的消息为:" + response.body);
+		});
+	}, function errorCallBack(error) {
+		// 连接失败时（服务器响应 ERROR 帧）的回调方法
+		setMessageInnerHTML("连接失败");
+	});	
+
+	//发送消息
+	function send() {
+		var message = document.getElementById('text').value;
+		var messageJson = JSON.stringify({
+			"name" : message
+		});
+		stompClient.send("/nettyTest/send", {}, messageJson);
+		setMessageInnerHTML("/send 你发送的消息:" + message);
+	}
+	
+	//发送消息
+	function send2() {
+		var message = document.getElementById('textUser').value;
+		var messageJson = JSON.stringify({
+			"name" : message
+		});
+		var userName2 = document.getElementById('userName2').value;
+		stompClient.send("/app/sendUser", {}, messageJson);
+		setMessageInnerHTML("/app/sendUser 你发送的消息:" + message);
+	}
+
+	//订阅消息
+	function subscribe1() {
+		stompClient.subscribe('/topic/messages', function(response) {
+			setMessageInnerHTML("已成功订阅/topic/messages---一次性订阅响应");
+			setMessageInnerHTML("/topic/messages 你接收到的消息为:" + response.body);
+		});
+	}
+
+	//订阅消息--本用户
+	function subscribe2() {
+		var userName2 = document.getElementById('userName2').value;
+		var path = '/user/'+userName2+'/topic/messages';
+		stompClient.subscribe(path, function (response) {
+			setMessageInnerHTML("已成功订阅"+ path+"---一次性订阅响应");
+			setMessageInnerHTML(path+" 你接收到的消息为:" + response.body);
+		});
+	}
+
+	//将消息显示在网页上
+	function setMessageInnerHTML(innerHTML) {
+		document.getElementById('message').innerHTML += innerHTML + '<br/>';
+	}
+	
+	function closeWebSocket() {
+        if(stompClient!=null){
+            stompClient.disconnect();
+        }
+        console.log('disconnected')
+    }
+</script>
+
+</html>

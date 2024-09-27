@@ -20,6 +20,7 @@
 		<module>springboot-designpattern-02</module>
 		<module>springboot-rmi-02</module>
 		<module>springboot-jdk18-02</module>
+		<module>springboot-netty</module>
 	</modules>
 
 	<properties>

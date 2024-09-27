@@ -33,6 +33,13 @@ public class HeapOOM {
 		
 		String c = new String("计算机");
 		System.out.println(c.intern() == c);
-		
+
+		int v1 = 6,v2=5;
+		System.out.println(v1 & v2);//4
+		System.out.println(v1 | v2);//7
+		System.out.println(v1 ^ v2);//3
+		System.out.println(v1>>2);//1
+		System.out.println(v1<<2);//24
+
 	}
 }

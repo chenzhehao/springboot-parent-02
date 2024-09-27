@@ -14,5 +14,5 @@ import java.rmi.RemoteException;
  */
 public interface IRMITest extends Remote {
 
-	public String test01() throws RemoteException;;
+	String test01() throws RemoteException;
 }
