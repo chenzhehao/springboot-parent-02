@@ -1,4 +1,4 @@
-package com.chenzhehao.test.springbootnetty;
+package com.chenzhehao.test.springbootnetty.test;
 
 import java.util.Scanner;
 
