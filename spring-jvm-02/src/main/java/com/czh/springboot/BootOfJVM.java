@@ -4,6 +4,7 @@ import java.util.Random;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,8 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2018年5月24日
  * @version 1.0
  */
-@SpringBootApplication
+
+
+//@EnableFeignClients(basePackages = "com.pica.cloud")
+@SpringBootApplication(scanBasePackages = "com.czh.springboot")
+//@EnableDiscoveryClient
+//@EnableSwagger2
+//@MapperScan("com.pica.cloud.campaign.ncov.server.mapper")
 @RestController
+@EnableCaching
 public class BootOfJVM {
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(BootOfJVM.class, args);
