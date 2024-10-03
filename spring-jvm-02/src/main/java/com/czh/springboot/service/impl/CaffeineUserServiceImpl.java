@@ -12,12 +12,22 @@ public class CaffeineUserServiceImpl implements CaffeineUserService {
 
     public static String Param = "test";
 
+    /**
+     * 使用注解机制
+     */
     @Cacheable(cacheNames = "cacheNamesCaffeineCache", key = "#userId")
     @Override
     public String getUserById(String userId) {
         System.out.println("getUserById from Data");
         return "test1";
     }
+
+    @CachePut(cacheNames = "cacheNamesCaffeineCache", key = "#userId")
+    public String refreshUserById(String userId) {
+        System.out.println("getUserById from Data");
+        return "test1";
+    }
+
 
     @Autowired
     private LoadingCache cache;
@@ -34,6 +44,7 @@ public class CaffeineUserServiceImpl implements CaffeineUserService {
     public String update(String id, String val) {
         System.out.println("update from Data");
         Param = val;
+//        cacheRefresh.put(id, val);
         return "true";
     }
 
@@ -42,12 +53,6 @@ public class CaffeineUserServiceImpl implements CaffeineUserService {
         System.out.println("refresh from Data");
         cacheRefresh.refresh(id);
         return "true";
-    }
-
-    @CachePut(cacheNames = "cacheNamesCaffeineCache", key = "#userId")
-    public String refreshUserById(String userId) {
-        System.out.println("getUserById from Data");
-        return "test1";
     }
 
 

@@ -1,7 +1,6 @@
 package com.czh.springboot.configure;
 
 import com.czh.springboot.service.impl.CaffeineUserServiceImpl;
-import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.CacheLoader;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import com.github.benmanes.caffeine.cache.LoadingCache;
@@ -15,19 +14,19 @@ public class CacheConfig {
 
     @Bean
     public CacheLoader<String, Object> cacheLoaderOne() {
-//        CacheLoader<String, Object> cacheLoader = Caffeine.newBuilder().build(key -> load(key));
         // 重写这个方法将oldValue值返回回去，进而刷新缓存
         return new CacheLoader<String, Object>() {
             @Override
             public Object load(String key) throws Exception {
+                //过期后再次调用方法会自动调用该方法获取值，重新放入缓存
                 System.out.println("load key:"+key);
                 return "test111";
             }
             // 重写这个方法将oldValue值返回回去，进而刷新缓存
-            @Override
-            public Object reload(String key, Object oldValue) throws Exception {
-                return oldValue;
-            }
+//            @Override
+//            public Object reload(String key, Object oldValue) throws Exception {
+//                return oldValue;
+//            }
         };
     }
 
@@ -58,9 +57,10 @@ public class CacheConfig {
                 .maximumSize(100000)
                 //软引用
                 .softValues()
-                .build(key -> getLoad(key));
+                .build(key -> getLoad(key));////过期后再次调用方法会自动调用该方法获取值，重新放入缓存
     }
 
+    //过期后再次调用方法会自动调用该方法获取值，重新放入缓存
     private static Object getLoad(String key) {
         System.out.println("getLoad:"+key);
         return CaffeineUserServiceImpl.Param;
