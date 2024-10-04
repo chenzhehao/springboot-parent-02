@@ -2,16 +2,19 @@ package com.czh.springboot;
 
 import java.util.Random;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+
 /**
  * Title: BootOfRocketMq.java Description: Copyright: Copyright (c) 2018
  * Company: www.chenzhehao.com
- * 
+ *
  * @author chenzhehao
  * @date 2018年5月24日
  * @version 1.0
@@ -22,14 +25,14 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication(scanBasePackages = "com.czh.springboot")
 //@EnableDiscoveryClient
 //@EnableSwagger2
-//@MapperScan("com.pica.cloud.campaign.ncov.server.mapper")
-@RestController
+@MapperScan("com.czh.springboot.infrastructure.persistence.mapper")
 @EnableCaching
+@RestController
 public class BootOfJVM {
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(BootOfJVM.class, args);
 	}
-	
+
 	@RequestMapping("/")
 	public Object jvmboot(){
 		StringBuffer s = new StringBuffer();
@@ -53,7 +56,7 @@ public class BootOfJVM {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 		return "success jvm";
 	}
 	class A{
