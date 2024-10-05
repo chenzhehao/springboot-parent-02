@@ -14,4 +14,6 @@ public interface CzhTableTestMapper {
     int updateByPrimaryKeySelective(CzhTableTest record);
 
     int updateByPrimaryKey(CzhTableTest record);
+
+    CzhTableTest queryByUuid(String uuid);
 }
