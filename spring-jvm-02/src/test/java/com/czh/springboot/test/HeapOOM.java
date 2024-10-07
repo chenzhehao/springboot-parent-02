@@ -35,6 +35,7 @@ public class HeapOOM {
 		System.out.println(c.intern() == c);
 
 		int v1 = 6,v2=5;
+		//110  101
 		System.out.println(v1 & v2);//4
 		System.out.println(v1 | v2);//7
 		System.out.println(v1 ^ v2);//3
