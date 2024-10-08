@@ -3,11 +3,10 @@ package com.chenzhehao.test.springbootnetty;
 
 import com.alibaba.fastjson.JSON;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
-public class TestClass {
+public class SortSeq {
 
     public static void main(String[] a) {
         Integer[] odd = new Integer[]{8, 3, 3, 3, 2, 1, 5, 63, 3, 0, 55, 2};
@@ -53,6 +52,45 @@ public class TestClass {
         System.out.println("桶--排序：" + JSON.toJSON(array));
         bucketSeq(array);
         System.out.println(JSON.toJSON(array));
+
+    }
+
+    public static void comparator() {
+        List<Integer> list = new ArrayList<>();
+        Collections.sort(list, (v1, v2)->{
+            if (v1.compareTo(v2) > 0) {
+                return 1;
+            } else if (v1.compareTo(v2) < 0) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+
+        list.sort(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                if (o1.compareTo(o2) > 0) {
+                    return 1;
+                } else if (o1.compareTo(o2) < 0) {
+                    return -1;
+                } else {
+                    return 0;
+                }
+            }
+        });
+
+        list.sort((v1, v2)->{
+            if (v1.compareTo(v2) > 0) {
+                return 1;
+            } else if (v1.compareTo(v2) < 0) {
+                return -1;
+            } else {
+                return 0;
+            }
+        });
+
+        list = list.stream().filter(v -> v > 0).collect(Collectors.toList());
 
     }
 

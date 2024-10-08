@@ -4,13 +4,15 @@ import com.czh.springboot.domain.model.DDDDomainModel;
 import com.czh.springboot.domain.service.DDDDomainService;
 import com.czh.springboot.infrastructure.persistence.dao.CzhTableTest;
 import com.czh.springboot.infrastructure.persistence.mapper.CzhTableTestMapper;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class DDDDomainServiceImpl implements DDDDomainService {
 
-    @Autowired
+//    @Autowired
     private CzhTableTestMapper czhTableTestMapper;
 
     @Override
@@ -24,5 +26,9 @@ public class DDDDomainServiceImpl implements DDDDomainService {
             dddDomainModel.setUserName(czhTableTest.getUserName());
             return dddDomainModel;
         }
+    }
+
+    public void setCzhTableTestMapper(CzhTableTestMapper czhTableTestMapper) {
+        this.czhTableTestMapper = czhTableTestMapper;
     }
 }

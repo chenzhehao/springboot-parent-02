@@ -4,13 +4,15 @@ import com.czh.springboot.controller.entity.resp.DDDDomainResp;
 import com.czh.springboot.domain.model.DDDDomainModel;
 import com.czh.springboot.domain.service.DDDDomainService;
 import com.czh.springboot.service.DDDService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@AllArgsConstructor
 public class DDDServiceImpl implements DDDService {
 
-    @Autowired
+//    @Autowired
     private DDDDomainService dddDomainService;
 
     @Override
@@ -25,5 +27,9 @@ public class DDDServiceImpl implements DDDService {
             return dddDomainResp;
         }
 
+    }
+
+    public void setDddDomainService(DDDDomainService dddDomainService) {
+        this.dddDomainService = dddDomainService;
     }
 }
