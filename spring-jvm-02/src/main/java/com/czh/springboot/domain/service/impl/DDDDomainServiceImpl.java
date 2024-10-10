@@ -7,6 +7,7 @@ import com.czh.springboot.infrastructure.persistence.mapper.CzhTableTestMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @AllArgsConstructor
@@ -15,6 +16,8 @@ public class DDDDomainServiceImpl implements DDDDomainService {
 //    @Autowired
     private CzhTableTestMapper czhTableTestMapper;
 
+//    @Transactional(value = "customTransactionManager")
+    @Transactional
     @Override
     public DDDDomainModel testDomainDDD(String uuid) {
         CzhTableTest  czhTableTest = czhTableTestMapper.queryByUuid(uuid);
