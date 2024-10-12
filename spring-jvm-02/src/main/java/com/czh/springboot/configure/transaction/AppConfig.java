@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 
 @Configuration
-@EnableAspectJAutoProxy(proxyTargetClass = true)
 @EnableTransactionManagement
 public class AppConfig {
     @Bean

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-
 public class TestAspect {
 
     @Before("execution(* com.czh.springboot.domain.service.impl.*.*(..))")
