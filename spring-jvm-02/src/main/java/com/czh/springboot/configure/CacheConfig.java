@@ -57,7 +57,8 @@ public class CacheConfig {
                 .maximumSize(100000)
                 //软引用
                 .softValues()
-                .build(key -> getLoad(key));////过期后再次调用方法会自动调用该方法获取值，重新放入缓存
+                //过期后再次调用方法会自动调用该方法获取值，重新放入缓存
+                .build(key -> getLoad(key));
     }
 
     //过期后再次调用方法会自动调用该方法获取值，重新放入缓存

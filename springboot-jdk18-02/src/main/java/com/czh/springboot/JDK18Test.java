@@ -141,7 +141,7 @@ public class JDK18Test {
 	}
 
 	// 快速排序
-	public int[] sort(int arr[], int low, int high) {
+	public int[] sort(int[] arr, int low, int high) {
 		int l = low;
 		int h = high;
 		int povit = arr[low];
