@@ -21,7 +21,7 @@
 		<module>springboot-rmi-02</module>
 		<module>springboot-jdk18-02</module>
 		<module>springboot-netty</module>
-		<module>spring-more-datasource</module>
+<!--		<module>spring-more-datasource</module>-->
 	</modules>
 
 	<properties>
