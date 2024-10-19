@@ -22,6 +22,7 @@
 		<module>springboot-jdk18-02</module>
 		<module>springboot-netty</module>
 		<module>springboot-more-datasource</module>
+		<module>springboot-more-datasource-dynamic</module>
 	</modules>
 
 	<properties>
