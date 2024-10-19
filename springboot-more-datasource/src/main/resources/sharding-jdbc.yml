@@ -13,6 +13,25 @@ dataSources:
     url: jdbc:mysql://localhost:3306/czh_test?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=GMT%2B8
     username: root
     password: csiicsii
+    #初始化连接池的连接数量 大小，最小，最大
+    initial-size: 5
+    min-idle: 5
+    max-active: 20
+    #配置获取连接等待超时的时间
+    max-wait: 60000
+    #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    time-between-eviction-runs-millis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    min-evictable-idle-time-millis: 30000
+    validation-query: SELECT 1 FROM DUAL
+    test-while-idle: true
+    test-on-borrow: true
+    test-on-return: false
+    # 是否缓存preparedStatement，也就是PSCache  官方建议MySQL下建议关闭   个人建议如果想用SQL防火墙 建议打开
+    pool-prepared-statements: true
+    max-pool-prepared-statement-per-connection-size: 20
+#    filters: stat,wall,log4j
+#    connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
   slave: # 跟上面的数据源对应
     dataSourceClassName: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -22,6 +41,25 @@ dataSources:
     url: jdbc:mysql://192.168.110.60:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
     username: pica_test
     password: pkv#sqvSGn@O1@tg
+    #初始化连接池的连接数量 大小，最小，最大
+    initial-size: 5
+    min-idle: 5
+    max-active: 20
+    #配置获取连接等待超时的时间
+    max-wait: 60000
+    #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+    time-between-eviction-runs-millis: 60000
+    # 配置一个连接在池中最小生存的时间，单位是毫秒
+    min-evictable-idle-time-millis: 30000
+    validation-query: SELECT 1 FROM DUAL
+    test-while-idle: true
+    test-on-borrow: true
+    test-on-return: false
+    # 是否缓存preparedStatement，也就是PSCache  官方建议MySQL下建议关闭   个人建议如果想用SQL防火墙 建议打开
+    pool-prepared-statements: true
+    max-pool-prepared-statement-per-connection-size: 20
+#    filters: stat,wall,log4j
+#    connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
 
 # 规则配置-读写分离配置
 rules:
