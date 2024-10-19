@@ -1,3 +1,5 @@
+#https://shardingsphere.apache.org/document/current/cn/quick-start/
+
 #  type: Memory                                     # 内存模式，元数据保存在当前进程中
 mode:
   type: Standalone
@@ -21,7 +23,7 @@ dataSources:
     username: pica_test
     password: pkv#sqvSGn@O1@tg
 
-# 规则配置
+# 规则配置-读写分离配置
 rules:
 - !READWRITE_SPLITTING
   dataSources:
