@@ -6,4 +6,6 @@ import com.chenzhehao.test.springbootmoredatasource.controller.entity.resp.DDDDo
 public interface DDDService {
 
     DDDDomainResp testDDD(String uuid);
+
+    int testInsert(String uuid);
 }

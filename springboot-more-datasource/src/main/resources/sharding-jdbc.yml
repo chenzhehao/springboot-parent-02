@@ -1,0 +1,39 @@
+#  type: Memory                                     # 内存模式，元数据保存在当前进程中
+mode:
+  type: Standalone
+  repository:
+    type: JDBC
+
+dataSources:
+  master: # 跟上面的数据源对应
+    dataSourceClassName: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/czh_test?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: csiicsii
+  slave: # 跟上面的数据源对应
+    dataSourceClassName: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://192.168.130.200:3306/test01?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+#    username: pica
+#    password: Joa5@73&8yAYJ2fe
+    url: jdbc:mysql://192.168.110.60:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false&allowMultiQueries=true
+    username: pica_test
+    password: pkv#sqvSGn@O1@tg
+
+# 规则配置
+rules:
+- !READWRITE_SPLITTING
+  dataSources:
+    readwrite_ds:
+      staticStrategy:
+        writeDataSourceName: master
+        readDataSourceNames:
+          - slave
+      loadBalancerName: random
+  loadBalancers:
+    random:
+      type: RANDOM
+
+props:
+  sql-show: true                                   # 打印SQL
