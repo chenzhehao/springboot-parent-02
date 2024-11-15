@@ -1,6 +1,6 @@
 
 server:
-  port: 8081
+  port: 19001
   servlet:
     context-path: /jvm2
 
@@ -21,9 +21,11 @@ spring:
 #datasource settiongs
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/czh_test?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=GMT%2B8
     username: root
-    password: csiicsii
+#    url: jdbc:mysql://localhost:3306/czh_test?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=GMT%2B8
+#    password: csiicsii
+    url: jdbc:mysql://rm-cn-jfj3zpicq0001xuo.rwlb.rds.aliyuncs.com:3306/czh_test?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=GMT%2B8
+    password: csiicsii1-
 # druid settings https://github.com/alibaba/druid/tree/master/druid-spring-boot-starter
     druid:
       #初始化连接池的连接数量 大小，最小，最大
